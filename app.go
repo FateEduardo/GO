@@ -1,26 +1,24 @@
 package main
 
 import (
-  "log"
-  "net/http"
-  "io/ioutil"
+	"io/ioutil"
+	"log"
+	"net/http"
 )
 
 var INDEX_HTML []byte
 
-
 func main() {
-  http.HandleFunc("/", IndexHandler)
-  log.Println("Listening...")
-  http.ListenAndServe(":3000", nil)
+	http.HandleFunc("/", IndexHandler)
+	log.Println("Listening...")
 }
 
-func IndexHandler(w http.ResponseWriter, r *http.Request){
-    w.Write(INDEX_HTML)
-   
+func IndexHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write(INDEX_HTML)
+
 }
 
-func init(){
-    INDEX_HTML, _ =ioutil.ReadFile("./tmpl/index.html")
-   
+func init() {
+	INDEX_HTML, _ = ioutil.ReadFile("./tmpl/index.html")
+
 }
