@@ -11,6 +11,7 @@ var INDEX_HTML []byte
 func main() {
 	http.HandleFunc("/", IndexHandler)
 	log.Println("Listening...")
+	appengine.Main()
 }
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
