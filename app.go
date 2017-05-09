@@ -1,4 +1,4 @@
-package main
+package hello
 
 import (
 	"io/ioutil"
@@ -8,11 +8,7 @@ import (
 
 var INDEX_HTML []byte
 
-func main() {
-	http.HandleFunc("/", IndexHandler)
-	log.Println("Listening...")
-	
-}
+
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(INDEX_HTML)
@@ -20,6 +16,8 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func init() {
+	http.HandleFunc("/", IndexHandler)
+	log.Println("Listening...")
 	INDEX_HTML, _ = ioutil.ReadFile("./tmpl/index.html")
 
 }
